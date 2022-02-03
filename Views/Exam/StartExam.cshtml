@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Examstagram.Models.Question>
+
+    <div class="container p-3">
+        <div class="row p-4">
+            <div class="col-6">
+                <h2 class="text-primary">Тест</h2>
+            </div>
+        </div>
+        <br /><br />
+
+
+
+        @if (Model.Count() > 0)
+        {
+    <form asp-controller="Exam" asp-action="ExamResults">
+
+        @foreach (var obj in Model)
+        {
+            <label for="exampleFormControlSelect2" class="d-block p-2 bg-primary text-white">@obj.QuestionContent</label>
+            <input type="hidden" name="questionId" value="@obj.Id" />
+            @foreach (var answer in obj.Answers)
+            {
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="@answer.AnswerContent" id="exampleRadios2" value="@answer.Id">
+                    <label class="form-check-label" for="exampleRadios2">
+                        @answer.AnswerContent
+                    </label>
+                </div>
+            }
+
+        }
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary">ExamResults</button>
+            </div>
+        </div>
+    </form>
+        }
+        else
+        {
+            <p>No  question exists.</p>
+        }
+
+    </div>

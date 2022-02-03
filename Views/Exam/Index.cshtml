@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Examstagram.Models.Category>
+
+
+<div class="container p-3">
+    <div class="row p-4">
+        <div class="col-6">
+            <h2 class="text-primary">Тесты</h2>
+        </div>
+
+    </div>
+    <br /><br />
+    <table class="table table-bordered table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>
+                    Тест
+                </th>
+                <th>
+                    Описание теста
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var obj in Model)
+            {
+                <tr>
+                    <td width="40%">@obj.Name</td>
+                    <td width="40%">@obj.Description</td>
+                    <td class="text-center">
+                        <div class="w-75 btn-group" role="group">
+                            <a asp-controller="Exam" asp-route-Id="@obj.Id" asp-action="StartExam" class="btn btn-primary mx-1">
+                                <i class="far fa-edit"></i> Выбрать
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+

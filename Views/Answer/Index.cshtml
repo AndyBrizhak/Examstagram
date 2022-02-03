@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Examstagram.Models.Answer>
+
+
+<div class="container p-3">
+    <div class="row p-4">
+        <div class="col-6">
+            <h2 class="text-primary">Список ответов</h2>
+        </div>
+        <div class="col-6">
+          <a asp-controller="Answer" asp-action="Create" class="btn btn-primary">
+                <i class="fas fa-plus"></i> &nbsp; Создать новый ответ
+         </a>
+        </div>
+    </div>
+    <br /><br />
+
+    @if (Model.Count() > 0)
+    {
+        <table class="table table-bordered table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>
+                        Ответ
+                    </th>
+                    <th>
+                        Да/нет
+
+                    </th>
+                    <th>
+                        Id вопроса
+                    </th>
+
+
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var obj in Model)
+                {
+                <tr>
+                    <td width="50%">@obj.AnswerContent</td>
+                    <td width="30%">@obj.AnswerCorrect</td>
+                    <td width="30%">@obj.QuestionId</td>
+
+
+
+                    <td class="text-center">
+                        <div class="w-75 btn-group" role="group">
+                            <a asp-controller="Answer" asp-route-Id="@obj.Id" asp-action="Edit" class="btn btn-primary mx-1">
+                                <i class="far fa-edit"></i>
+                            </a>
+
+                            <a asp-controller="Answer" asp-route-Id="@obj.Id" asp-action="Delete" class="btn btn-danger mx-1">
+                                <i class="far fa-trash-alt"></i>
+                            </a>
+
+
+                        </div>
+                    </td>
+
+
+
+                </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No  answer exists.</p>
+    }
+
+</div>
+
+
+
+

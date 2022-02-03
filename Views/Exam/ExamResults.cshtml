@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Examstagram.Models.Answer>
+
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-dark">ExamResult</h2>
+        </div>
+    </div>
+    <br /><br />
+
+    <h3>Result</h3>
+    Score: @ViewBag.score
+
+    @if(Model.Count() > 0)
+            {
+                @foreach(var obj in Model)
+                {
+                    <h3>@obj.AnswerCorrect</h3>
+                }
+            }
+</div>
